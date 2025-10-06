@@ -1,7 +1,28 @@
-<html>
-<head></head>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    html, body { height:100%; margin:0; overflow:hidden; }
+    #container { position:fixed; inset:0; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/powerbi-client@2.23.1/dist/powerbi.min.js"></script>
+</head>
 <body>
-<h2>Dashboard Maas Serviços</h2>
-<iframe title="Maas Serviços Dashboard" width="1600" height="980" src="https://app.powerbi.com/view?r=eyJrIjoiYjU3ZDkxNDgtZjVkZS00MTJmLWFkMzktMGQzMzdiZmM4YjkwIiwidCI6ImRjMTY5M2RmLWQ2NWEtNDkxZS1iY2VkLWUxNzgwM2ZlYWY1ZSJ9" frameborder="0" allowFullScreen="true"></iframe>
+  <div id="container"></div>
+  <script>
+    const models = window['powerbi-client'].models;
+    const embedUrl = "https://app.powerbi.com/view?r=eyJrIjoiYjU3ZDkxNDgtZjVkZS00MTJmLWFkMzktMGQzMzdiZmM4YjkwIiwidCI6ImRjMTY5M2RmLWQ2NWEtNDkxZS1iY2VkLWUxNzgwM2ZlYWY1ZSJ9";
+
+    powerbi.embed(document.getElementById('container'), {
+      type: 'report',
+      embedUrl,
+      settings: {
+        layoutType: models.LayoutType.FitToWidth, 
+        panes: { filters: { visible: false }, pageNavigation: { visible: false } }
+      }
+    });
+  </script>
 </body>
 </html>
